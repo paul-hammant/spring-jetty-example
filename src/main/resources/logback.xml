@@ -8,7 +8,7 @@
     </encoder>
   </appender>
   <logger name="org.springframework" level="INFO"/>
-  <logger name="com.fernandospr.example" level="DEBUG" />
+  <logger name="com.paulhammant.springantinteg" level="DEBUG" />
   <root level="WARN">
     <appender-ref ref="stdout"/>
   </root>

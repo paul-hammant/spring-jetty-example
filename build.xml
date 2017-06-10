@@ -1,0 +1,72 @@
+<project name="helloworld" default="war">
+
+	<property name="webxml" location="${web}/WEB-INF/web.xml" />
+	<property name="build" location="build" />
+	<property name="classes" location="${build}/classes" />
+	<property name="testClasses" location="${build}/testClasses" />
+
+	<property name="version" value="0.1-dev" />
+	<property name="source" value="1.7" />
+	<property name="target" value="1.7" />
+
+	<path id="classpath">
+		<fileset dir="libs/compile">
+			<include name="*.jar" />
+		</fileset>
+	</path>
+
+	<path id="testClasspath">
+		<fileset dir="libs/test">
+			<include name="*.jar" />
+		</fileset>
+		<fileset dir="libs/compile">
+			<include name="*.jar" />
+		</fileset>
+	</path>
+
+	<target name="clean">
+		<delete dir="build" />
+	</target>
+
+	<target name="init" depends="clean">
+		<mkdir dir="build" />
+		<mkdir dir="build/classes" />
+		<mkdir dir="build/testClasses" />
+	</target>
+
+	<target name="compile" depends="init">
+		<javac includeantruntime="false" srcdir="src/main/java" destdir="build/classes" source="${source}" target="${target}">
+			<classpath refid="classpath" />
+		</javac>
+		<copy todir="build/classes">
+			<fileset dir="src/main/resources"/>
+		</copy>
+
+	</target>
+
+	<target name="testCompile" depends="compile">
+		<javac includeantruntime="true" srcdir="src/test/java" destdir="build/testClasses" source="${source}" target="${target}">
+			<classpath refid="testClasspath" />
+			<classpath location="build/classes"/>
+		</javac>
+	</target>
+
+	<target name="test" depends="testCompile">
+
+		<junit printsummary="yes" haltonfailure="yes" outputtoformatters="yes" showoutput="true">
+
+			<classpath refid="testClasspath"/>
+			<classpath location="build/classes"/>
+			<classpath location="build/testClasses"/>
+			
+			<test name="com.paulhammant.springantinteg.HWIntegrationTest"
+				  haltonfailure="yes" outfile="result">
+
+				<formatter type="plain" usefile="false" />
+
+			</test>
+
+		</junit>
+	</target>
+
+</project>
