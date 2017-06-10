@@ -42,15 +42,7 @@
             <artifactId>spring-webmvc</artifactId>
             <version>${spring.version}</version>
         </dependency>
-        
-        <!-- Freemarker -->
-        
-		<dependency>
-		  	<groupId>org.freemarker</groupId>
-		  	<artifactId>freemarker</artifactId>
-		  	<version>2.3.21</version>
-		</dependency>
-		
+
 		<dependency><!-- Necesario para FreeMarkerConfigurer -->
 	        <groupId>org.springframework</groupId>
 	        <artifactId>spring-context-support</artifactId>
@@ -83,14 +75,6 @@
             <groupId>org.slf4j</groupId>
             <artifactId>jcl-over-slf4j</artifactId>
             <version>${slf4j.version}</version>
-        </dependency>
-
-        <!-- Mongo -->
-
-        <dependency>
-            <groupId>org.springframework.data</groupId>
-            <artifactId>spring-data-mongodb</artifactId>
-            <version>1.7.0.RELEASE</version>
         </dependency>
 
         <!-- Testing -->

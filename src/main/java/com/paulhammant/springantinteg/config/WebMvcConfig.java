@@ -64,13 +64,6 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
         resolver.setOrder(1);
         return resolver;
     }
-
-    @Bean
-    public FreeMarkerConfigurer getFreemarkerConfig() {
-        FreeMarkerConfigurer result = new FreeMarkerConfigurer();
-        result.setTemplateLoaderPath("/pages/");
-        return result;
-    }   
     
     @Bean
     public InternalResourceViewResolver getInternalResourceViewResolver() {
